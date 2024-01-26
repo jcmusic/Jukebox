@@ -19,7 +19,7 @@ mono_crash.*
 # Build results
 JCM/API/bin/
 JCM/DAL/bin/
-JCM/Models/bin/
+JCM/Model/bin/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
