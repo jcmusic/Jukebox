@@ -4,5 +4,17 @@
         <name>Jcm.API</name>
     </assembly>
     <members>
+        <member name="M:Jcm.API.Controllers.PerformanceActController.GetPerformanceActs">
+            <summary>
+            Get list of performance acts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.PerformanceActController.GetPerformanceActs(System.Int32)">
+            <summary>
+            Get performance act by id
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>

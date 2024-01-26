@@ -5,7 +5,7 @@ using Jcm.Models.Api;
 namespace Jcm.API.Controllers
 {
     [ApiController]
-    [Route("Act")]
+    [Route("api/acts")]
     public class PerformanceActController : ControllerBase
     {
 
@@ -16,10 +16,42 @@ namespace Jcm.API.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get list of performance acts
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<PerformanceAct>> GetPerformanceActs()
         {
             var list = PerformanceActDataStore.Current.PerformanceActs.ToList();
+
+            if (list == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(list);
+        }
+
+        /// <summary>
+        /// Get performance act by id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<PerformanceAct>> GetPerformanceActs(int id)
+        {
+            var list = PerformanceActDataStore.Current.PerformanceActs
+                .FirstOrDefault(a => a.Id == id);
+
+            if (list == null)
+            {
+                return NotFound();
+            }
+
             return Ok(list);
         }
     }
