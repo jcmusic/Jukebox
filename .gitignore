@@ -17,6 +17,7 @@
 mono_crash.*
 
 # Build results
+JCM/API/bin/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -475,3 +476,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+JCM/API/bin/Debug/net6.0/Jcm.API.deps.json
+JCM/API/bin/Debug/net6.0/Jcm.API.dll
+JCM/API/bin/Debug/net6.0/Jcm.API.dll
+JCM/API/bin/Debug/net6.0/Jcm.API.exe
