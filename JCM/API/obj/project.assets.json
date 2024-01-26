@@ -2047,11 +2047,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Source\\MyRepos\\JCM\\API\\Jcm.API.csproj",
+      "projectUniqueName": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\API\\Jcm.API.csproj",
       "projectName": "Jcm.API",
-      "projectPath": "C:\\Source\\MyRepos\\JCM\\API\\Jcm.API.csproj",
+      "projectPath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\API\\Jcm.API.csproj",
       "packagesPath": "C:\\Users\\ixlns\\.nuget\\packages\\",
-      "outputPath": "C:\\Source\\MyRepos\\JCM\\API\\obj\\",
+      "outputPath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ixlns\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2068,11 +2068,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Source\\MyRepos\\JCM\\DAL\\Jcm.DAL.csproj": {
-              "projectPath": "C:\\Source\\MyRepos\\JCM\\DAL\\Jcm.DAL.csproj"
+            "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\DAL\\Jcm.DAL.csproj": {
+              "projectPath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\DAL\\Jcm.DAL.csproj"
             },
-            "C:\\Source\\MyRepos\\JCM\\Models\\Jcm.Models.csproj": {
-              "projectPath": "C:\\Source\\MyRepos\\JCM\\Models\\Jcm.Models.csproj"
+            "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\Models\\Jcm.Models.csproj": {
+              "projectPath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\Models\\Jcm.Models.csproj"
             }
           }
         }

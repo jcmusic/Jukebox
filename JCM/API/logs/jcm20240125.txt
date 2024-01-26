@@ -354,3 +354,43 @@ System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport
 2024-01-25 21:14:00.828 -08:00 [INF] Executed action Jcm.API.Controllers.PerformanceActController.GetPerformanceActs (Jcm.API) in 268.8592ms
 2024-01-25 21:14:00.832 -08:00 [INF] Executed endpoint 'Jcm.API.Controllers.PerformanceActController.GetPerformanceActs (Jcm.API)'
 2024-01-25 21:14:00.832 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7280/Act - - - 200 518 application/json;+charset=utf-8 288.8990ms
+2024-01-25 21:27:04.649 -08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-01-25 21:27:04.794 -08:00 [DBG] Hosting starting
+2024-01-25 21:27:04.936 -08:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 62AAC84ABFDA6859F70B6242D93FE1E9356E5D54)
+2024-01-25 21:27:04.968 -08:00 [INF] Now listening on: https://localhost:7280
+2024-01-25 21:27:04.969 -08:00 [INF] Now listening on: http://localhost:5223
+2024-01-25 21:27:04.970 -08:00 [DBG] Loaded hosting startup assembly Jcm.API
+2024-01-25 21:27:04.971 -08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-01-25 21:27:04.971 -08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-01-25 21:27:04.972 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-25 21:27:04.973 -08:00 [INF] Hosting environment: Development
+2024-01-25 21:27:04.974 -08:00 [INF] Content root path: C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\API\
+2024-01-25 21:27:04.975 -08:00 [DBG] Hosting started
+2024-01-25 21:27:05.339 -08:00 [DBG] Connection id "0HN0U5TNF2JKK" accepted.
+2024-01-25 21:27:05.341 -08:00 [DBG] Connection id "0HN0U5TNF2JKK" started.
+2024-01-25 21:27:05.342 -08:00 [DBG] Connection id "0HN0U5TNF2JKL" accepted.
+2024-01-25 21:27:05.343 -08:00 [DBG] Connection id "0HN0U5TNF2JKL" started.
+2024-01-25 21:27:05.729 -08:00 [DBG] Connection id "0HN0U5TNF2JKM" accepted.
+2024-01-25 21:27:05.730 -08:00 [DBG] Connection id "0HN0U5TNF2JKM" started.
+2024-01-25 21:27:05.788 -08:00 [DBG] Connection 0HN0U5TNF2JKM established using the following protocol: "Tls13"
+2024-01-25 21:27:05.888 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/index.html - -
+2024-01-25 21:27:05.932 -08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-01-25 21:27:05.952 -08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-01-25 21:27:05.953 -08:00 [DBG] Request did not match any endpoints
+2024-01-25 21:27:10.263 -08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-01-25 21:27:10.409 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - -
+2024-01-25 21:27:10.413 -08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-01-25 21:27:10.417 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7280/_vs/browserLink - -
+2024-01-25 21:27:10.418 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_framework/aspnetcore-browser-refresh.js - - - 200 12346 application/javascript;+charset=utf-8 8.4651ms
+2024-01-25 21:27:10.419 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/index.html - - - 200 - text/html;charset=utf-8 4539.7390ms
+2024-01-25 21:27:10.485 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7280/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 68.7918ms
+2024-01-25 21:27:10.548 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - -
+2024-01-25 21:27:10.548 -08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-01-25 21:27:10.549 -08:00 [DBG] Request did not match any endpoints
+2024-01-25 21:27:10.652 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7280/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 103.7770ms
+2024-01-25 21:27:15.364 -08:00 [DBG] Authentication of the HTTPS connection timed out.
+2024-01-25 21:27:15.364 -08:00 [DBG] Authentication of the HTTPS connection timed out.
+2024-01-25 21:27:15.367 -08:00 [DBG] Connection id "0HN0U5TNF2JKK" stopped.
+2024-01-25 21:27:15.367 -08:00 [DBG] Connection id "0HN0U5TNF2JKL" stopped.
+2024-01-25 21:27:15.369 -08:00 [DBG] Connection id "0HN0U5TNF2JKK" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-01-25 21:27:15.369 -08:00 [DBG] Connection id "0HN0U5TNF2JKL" sending FIN because: "The Socket transport's send loop completed gracefully."

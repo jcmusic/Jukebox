@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gu/0MOOE03BlVgBjpH3nfLbyWk7dncRdUiX6gJp6iDt8nlJWOt2PvAsNJ6Sr3/3QM2fyFPpufz7kN7N9tS88Yw==",
+  "dgSpecHash": "+XGrYxSEaxrQVRknBKAJ6wgoIUxrkZZFdD9vhE42gO5wO5MIpcZRtDdqmIt5GOml6QkrHuZYipltrLUV6l4IdQ==",
   "success": true,
-  "projectFilePath": "C:\\Source\\MyRepos\\JCM\\DAL\\Jcm.DAL.csproj",
+  "projectFilePath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\DAL\\Jcm.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ixlns\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\ixlns\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0\\microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",

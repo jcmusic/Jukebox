@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Source\\MyRepos\\JCM\\Models\\Jcm.Models.csproj": {}
+    "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\Models\\Jcm.Models.csproj": {}
   },
   "projects": {
-    "C:\\Source\\MyRepos\\JCM\\Models\\Jcm.Models.csproj": {
+    "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\Models\\Jcm.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\MyRepos\\JCM\\Models\\Jcm.Models.csproj",
+        "projectUniqueName": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\Models\\Jcm.Models.csproj",
         "projectName": "Jcm.Models",
-        "projectPath": "C:\\Source\\MyRepos\\JCM\\Models\\Jcm.Models.csproj",
+        "projectPath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\Models\\Jcm.Models.csproj",
         "packagesPath": "C:\\Users\\ixlns\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\MyRepos\\JCM\\Models\\obj\\",
+        "outputPath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ixlns\\AppData\\Roaming\\NuGet\\NuGet.Config",

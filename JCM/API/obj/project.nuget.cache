@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fzTEM4mmhS0bqG1riJ0h62QJjbCwdH7ZHViikFG9OrQFFjO5giWF+T1jPU44lyCWsG1KBE+L6GCN5hsI7Q7tYA==",
+  "dgSpecHash": "8pINo5cTXRT2jLIx2uD4/vnovAkshNyznEqR93jtIGVdAoPD3UdrXRGQv+5wNSbiuKIfFzEXpHzyuDunRMx2rg==",
   "success": true,
-  "projectFilePath": "C:\\Source\\MyRepos\\JCM\\API\\Jcm.API.csproj",
+  "projectFilePath": "C:\\Source\\MyRepos\\Net_6_WebApi\\NET6_WebApi_Template\\JCM\\API\\Jcm.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ixlns\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.26\\microsoft.aspnetcore.jsonpatch.6.0.26.nupkg.sha512",
     "C:\\Users\\ixlns\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.26\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.26.nupkg.sha512",
