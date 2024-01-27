@@ -9,3 +9,14 @@ C:\Source\MyRepos\JCM\Models\obj\Debug\net6.0\Jcm.Models.dll
 C:\Source\MyRepos\JCM\Models\obj\Debug\net6.0\refint\Jcm.Models.dll
 C:\Source\MyRepos\JCM\Models\obj\Debug\net6.0\Jcm.Models.pdb
 C:\Source\MyRepos\JCM\Models\obj\Debug\net6.0\ref\Jcm.Models.dll
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\bin\Debug\net6.0\Jcm.Models.deps.json
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\bin\Debug\net6.0\Jcm.Models.dll
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\bin\Debug\net6.0\Jcm.Models.pdb
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\Jcm.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\Jcm.Models.AssemblyInfoInputs.cache
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\Jcm.Models.AssemblyInfo.cs
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\Jcm.Models.csproj.CoreCompileInputs.cache
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\Jcm.Models.dll
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\refint\Jcm.Models.dll
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\Jcm.Models.pdb
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\Models\obj\Debug\net6.0\ref\Jcm.Models.dll

@@ -486,3 +486,5 @@ JCM/API/bin/Debug/net6.0/Jcm.API.deps.json
 JCM/API/bin/Debug/net6.0/Jcm.API.dll
 JCM/API/bin/Debug/net6.0/Jcm.API.dll
 JCM/API/bin/Debug/net6.0/Jcm.API.exe
+
+*.cache
