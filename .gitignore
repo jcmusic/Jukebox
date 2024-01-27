@@ -18,8 +18,12 @@ mono_crash.*
 
 # Build results
 JCM/API/bin/
+JCM/API/obj/
+JCM/API/logs/
 JCM/DAL/bin/
+JCM/DAL/obj/
 JCM/Model/bin/
+JCM/Model/obj/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

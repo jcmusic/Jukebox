@@ -1,3 +1,5 @@
+using Jcm.DAL;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
 
@@ -29,6 +31,12 @@ builder.Services.AddSwaggerGen(setupAction =>
 
     setupAction.IncludeXmlComments(xmlCommentsFullPath);
 });
+
+builder.Services.AddDbContext<TalentContext>(
+    DbContextOptions => DbContextOptions.UseSqlite(
+        builder.Configuration["ConnectionStrings:TalentDBConnectionString"],
+        b => b.MigrationsAssembly("Jcm.DAL")));
+
 
 builder.Services.AddApiVersioning(setupAction =>
 {
