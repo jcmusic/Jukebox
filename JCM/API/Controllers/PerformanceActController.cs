@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
-using Jcm.DAL;
+using Jcm.BLL.Interfaces;
 using Jcm.Models.Api;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Jcm.API.Controllers
 {
@@ -10,10 +10,14 @@ namespace Jcm.API.Controllers
     {
 
         private readonly ILogger<PerformanceActController> _logger;
+        private readonly IPerformanceActReposity _performanceActRepository;
 
-        public PerformanceActController(ILogger<PerformanceActController> logger)
+        public PerformanceActController(ILogger<PerformanceActController> logger,
+            IPerformanceActReposity performanceActRepository)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _performanceActRepository = performanceActRepository ?? 
+                throw new ArgumentNullException(nameof(performanceActRepository));
         }
 
         /// <summary>
@@ -23,9 +27,11 @@ namespace Jcm.API.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<PerformanceAct>> GetPerformanceActs()
+        public async Task<ActionResult<IEnumerable<PerformanceActDto>>> GetPerformanceActsAsync(
+            int pageNumber = 0, int pageSize = 10, bool includePerformers = false)
         {
-            var list = PerformanceActDataStore.Current.PerformanceActs.ToList();
+            var list = await _performanceActRepository
+                .GetPerformanceActsAsync(pageNumber, pageSize, includePerformers);
 
             if (list == null)
             {
@@ -42,17 +48,17 @@ namespace Jcm.API.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<PerformanceAct>> GetPerformanceActs(int id)
+        public async Task<ActionResult<PerformanceActDto>> GetPerformanceActAsync(
+            int id, bool includePerformers = false)
         {
-            var list = PerformanceActDataStore.Current.PerformanceActs
-                .FirstOrDefault(a => a.Id == id);
+            var act = await _performanceActRepository.GetPerformanceActAsync(id, includePerformers);
 
-            if (list == null)
+            if (act == null)
             {
                 return NotFound();
             }
 
-            return Ok(list);
+            return Ok(act);
         }
     }
 }

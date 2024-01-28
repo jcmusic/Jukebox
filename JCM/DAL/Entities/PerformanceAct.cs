@@ -5,6 +5,11 @@ namespace Jcm.DAL.Entities
 {
     public class PerformanceAct
     {
+        public PerformanceAct(string name)
+        {
+            Name = name;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

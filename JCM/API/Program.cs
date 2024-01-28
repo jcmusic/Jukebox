@@ -1,3 +1,4 @@
+using Jcm.BLL.Interfaces;
 using Jcm.DAL;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -5,7 +6,7 @@ using System.Reflection;
 
 
 Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
+    .MinimumLevel.Information()
     .WriteTo.Console()
     .WriteTo.File("logs/jcm.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
@@ -44,6 +45,11 @@ builder.Services.AddApiVersioning(setupAction =>
     setupAction.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
     setupAction.ReportApiVersions = true;
 });
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IPerformanceActReposity, Jcm.DAL.Repositories.PerformanceActRespository>();
+
+/********************** Build ****************************************************************/
 
 var app = builder.Build();
 

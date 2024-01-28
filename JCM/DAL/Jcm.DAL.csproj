@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.26" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.26" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.26">
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BLL\Jcm.BLL.csproj" />
     <ProjectReference Include="..\Models\Jcm.Models.csproj" />
   </ItemGroup>
 

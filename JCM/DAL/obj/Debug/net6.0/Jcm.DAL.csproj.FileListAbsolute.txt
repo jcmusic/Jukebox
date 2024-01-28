@@ -30,3 +30,5 @@ C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\DAL\bin\Debug\net6.0\Jcm
 C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\DAL\obj\Debug\net6.0\Jcm.DAL.csproj.CopyComplete
 C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\DAL\obj\Debug\net6.0\Jcm.DAL.genruntimeconfig.cache
 C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\DAL\obj\Debug\net6.0\ref\Jcm.DAL.dll
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\DAL\bin\Debug\net6.0\Jcm.BLL.dll
+C:\Source\MyRepos\Net_6_WebApi\NET6_WebApi_Template\JCM\DAL\bin\Debug\net6.0\Jcm.BLL.pdb

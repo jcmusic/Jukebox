@@ -5,7 +5,7 @@ namespace Jcm.DAL
 {
     public class TalentContext : DbContext
     {
-        public DbSet<PerformanceAct> Acts { get; set; } = null!;
+        public DbSet<PerformanceAct> PerformanceActs { get; set; } = null!;
         public DbSet<Performer> Performers { get; set; } = null!;
 
         public TalentContext(DbContextOptions<TalentContext> options)
@@ -17,15 +17,13 @@ namespace Jcm.DAL
         {
             modelBuilder.Entity<PerformanceAct>()
                 .HasData(
-                    new PerformanceAct()
+                    new PerformanceAct("The Beatles")
                     {
-                        Id = 1,
-                        Name = "The Beatles"
+                        Id = 1
                     },
-                    new PerformanceAct()
+                    new PerformanceAct("The Rolling Stones")
                     {
-                        Id = 2,
-                        Name = "The Rolling Stones"
+                        Id = 2
                     }
                 );
 

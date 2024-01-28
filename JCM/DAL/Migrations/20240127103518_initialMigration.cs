@@ -4,12 +4,12 @@
 
 namespace Jcm.DAL.Migrations
 {
-    public partial class intial_migration : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Acts",
+                name: "PerformanceActs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -19,7 +19,7 @@ namespace Jcm.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Acts", x => x.Id);
+                    table.PrimaryKey("PK_PerformanceActs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,20 +36,20 @@ namespace Jcm.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Performers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Performers_Acts_PerformanceActId",
+                        name: "FK_Performers_PerformanceActs_PerformanceActId",
                         column: x => x.PerformanceActId,
-                        principalTable: "Acts",
+                        principalTable: "PerformanceActs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Acts",
+                table: "PerformanceActs",
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[] { 1, null, "The Beatles" });
 
             migrationBuilder.InsertData(
-                table: "Acts",
+                table: "PerformanceActs",
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[] { 2, null, "The Rolling Stones" });
 
@@ -110,7 +110,7 @@ namespace Jcm.DAL.Migrations
                 name: "Performers");
 
             migrationBuilder.DropTable(
-                name: "Acts");
+                name: "PerformanceActs");
         }
     }
 }

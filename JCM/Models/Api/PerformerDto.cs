@@ -5,7 +5,7 @@ namespace Jcm.Models.Api
     /// <summary>
     /// Dto for a performer or group
     /// </summary>
-    public class Performer
+    public class PerformerDto
     {
         /// <summary>
         /// The id of the performer

@@ -9,6 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jcm.Models", "Models\Jcm.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jcm.API", "API\Jcm.API.csproj", "{9E12D030-D029-44A4-9906-5BD458889426}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{9043EED0-21BA-407C-AC43-8FA5D008D394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jcm.BLL", "BLL\Jcm.BLL.csproj", "{A658F3F7-64D3-4DC1-8939-87B39681761A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{DA9573FA-D077-4631-8F5C-70EC0CDF7563}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CDEA4002-E223-40E2-A400-1937F3704358}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +35,18 @@ Global
 		{9E12D030-D029-44A4-9906-5BD458889426}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E12D030-D029-44A4-9906-5BD458889426}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E12D030-D029-44A4-9906-5BD458889426}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A658F3F7-64D3-4DC1-8939-87B39681761A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A658F3F7-64D3-4DC1-8939-87B39681761A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A658F3F7-64D3-4DC1-8939-87B39681761A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A658F3F7-64D3-4DC1-8939-87B39681761A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B53273C-17E0-48AA-8A73-8E4A6185C073} = {CDEA4002-E223-40E2-A400-1937F3704358}
+		{9F6AE94B-7AA0-481F-8D80-F9F4FBD23FE6} = {DA9573FA-D077-4631-8F5C-70EC0CDF7563}
+		{A658F3F7-64D3-4DC1-8939-87B39681761A} = {9043EED0-21BA-407C-AC43-8FA5D008D394}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB138EF6-93A9-4E55-9CA5-7F8CCFAE45BF}

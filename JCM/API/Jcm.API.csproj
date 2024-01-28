@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BLL\Jcm.BLL.csproj" />
     <ProjectReference Include="..\DAL\Jcm.DAL.csproj" />
     <ProjectReference Include="..\Models\Jcm.Models.csproj" />
   </ItemGroup>

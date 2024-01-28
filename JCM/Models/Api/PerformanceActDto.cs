@@ -5,7 +5,7 @@ namespace Jcm.Models.Api
     /// <summary>
     /// Dto for a performance act or group
     /// </summary>
-    public class PerformanceAct
+    public class PerformanceActDto
     {
         /// <summary>
         /// The id of the performer act or group
@@ -22,7 +22,7 @@ namespace Jcm.Models.Api
         /// <summary>
         /// The performers in this act or group
         /// </summary>
-        public IEnumerable<Performer> Performers { get; set; }
-            = new List<Performer>();
+        public IEnumerable<PerformerDto> Performers { get; set; }
+            = new List<PerformerDto>();
     }
 }

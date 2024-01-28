@@ -33,7 +33,7 @@ namespace Jcm.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Acts");
+                    b.ToTable("PerformanceActs");
 
                     b.HasData(
                         new

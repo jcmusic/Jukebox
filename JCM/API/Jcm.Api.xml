@@ -4,13 +4,13 @@
         <name>Jcm.API</name>
     </assembly>
     <members>
-        <member name="M:Jcm.API.Controllers.PerformanceActController.GetPerformanceActs">
+        <member name="M:Jcm.API.Controllers.PerformanceActController.GetPerformanceActsAsync(System.Int32,System.Int32,System.Boolean)">
             <summary>
             Get list of performance acts
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Jcm.API.Controllers.PerformanceActController.GetPerformanceActs(System.Int32)">
+        <member name="M:Jcm.API.Controllers.PerformanceActController.GetPerformanceActAsync(System.Int32,System.Boolean)">
             <summary>
             Get performance act by id
             </summary>

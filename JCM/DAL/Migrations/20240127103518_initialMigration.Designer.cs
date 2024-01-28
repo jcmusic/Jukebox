@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jcm.DAL.Migrations
 {
     [DbContext(typeof(TalentContext))]
-    [Migration("20240127063054_intial_migration")]
-    partial class intial_migration
+    [Migration("20240127103518_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace Jcm.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Acts");
+                    b.ToTable("PerformanceActs");
 
                     b.HasData(
                         new
