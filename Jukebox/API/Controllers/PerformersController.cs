@@ -1,10 +1,13 @@
 using Jukebox.Models.Api;
 using Jukebox.Models.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Jcm.API.Controllers
 {
     [ApiController]
+    [Authorize]
+    [ApiVersion("1.0")]
     [Route("api/performers")]
     public class PerformersController : ControllerBase
     {

@@ -5,6 +5,10 @@ using System.Reflection;
 using Jukebox.DAL.Repositories;
 using Jukebox.Models.Repositories;
 using Jukebox.BLL.Interfaces;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 
 Log.Logger = new LoggerConfiguration()
@@ -23,18 +27,46 @@ builder.Services.AddControllers(options =>
 {
     options.ReturnHttpNotAcceptable = true;
 }).AddNewtonsoftJson()
-.AddXmlDataContractSerializerFormatters();
+.AddXmlDataContractSerializerFormatters();  // api xml support
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(setupAction =>
 {
+    // Swagger xml documentation
     var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml.";
     var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
-
     setupAction.IncludeXmlComments(xmlCommentsFullPath);
+
+    // Authentication
+    setupAction.AddSecurityDefinition("JukeboxApiBearerAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
+    {
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        Description = "Input a valid token to access this API"
+    });
+
+    setupAction.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "JukeboxApiBearerAuth" 
+                }
+            }, new List<string>() 
+        }
+    });
+    // END Authentication
+
 });
 
+
+// DB Context
 builder.Services.AddDbContext<JukeboxContext>(
     DbContextOptions => DbContextOptions.UseSqlite(
         builder.Configuration["ConnectionStrings:JukeboxDBConnectionString"],
@@ -48,7 +80,37 @@ builder.Services.AddApiVersioning(setupAction =>
     setupAction.ReportApiVersions = true;
 });
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+// Dependency Injection
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Authentication:Issuer"],
+            ValidAudience = builder.Configuration["Authentication:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.ASCII.GetBytes(builder.Configuration["Authentication:SecretForKey"]))
+        };
+    });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("MustBeAuthenticated", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+    });
+    // todo: only band members can vote to rank their songlist
+    //options.AddPolicy("MustBeBandmember", policy =>
+    //{
+    //    policy.RequireAuthenticatedUser();
+    //    policy.RequireClaim("member", "true");
+    //});
+});
+builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddScoped<IPerformerRespository, PerformerRespository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
 
@@ -66,9 +128,20 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllers();
 
 app.Run();
+
+
+// Check auth - add auth Postman request
+// Add paging class
+// Add search/filtering
+// Add file d/l
+// Add API tests
+// Add Unit tests
+// Code UI
+// Deploy

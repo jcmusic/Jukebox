@@ -1,10 +1,13 @@
 using Jukebox.BLL.Interfaces;
 using Jukebox.Models.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Jcm.API.Controllers
 {
     [ApiController]
+    [Authorize]
+    [ApiVersion("1.0")]
     [Route("api/songs")]
     public class SongsController : ControllerBase
     {

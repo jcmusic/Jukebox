@@ -4,6 +4,11 @@
         <name>Jukebox.API</name>
     </assembly>
     <members>
+        <member name="T:Jcm.Api.Controllers.AuthenticationController.AuthenticationRequestBody">
+            <summary>
+            username and password
+            </summary>
+        </member>
         <member name="M:Jcm.API.Controllers.PerformersController.GetPerformanceActsAsync(System.Int32,System.Int32)">
             <summary>
             Get list of performers
