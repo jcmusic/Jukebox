@@ -4,7 +4,10 @@
  Including:
 - REST APIs for CRUD actions on Performers & Songs
 - SqlLite DB
-- Respository Patternv
+- DTO model (No entities exposed outside DAL)
+- Respository Pattern (Isolated DAL)
+- AppSettings Configuration
+- Dependency Injection (coding to interface)
 - Serilog Logging (w/ Daily File/rolling interval)
 - Documented Swagger endpoints
 - API versioning
