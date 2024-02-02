@@ -17,13 +17,13 @@
 mono_crash.*
 
 # Build results
-JCM/API/bin/
-JCM/API/obj/
-JCM/API/logs/
-JCM/DAL/bin/
-JCM/DAL/obj/
-JCM/Model/bin/
-JCM/Model/obj/
+Jukebox/API/bin/
+Jukebox/API/obj/
+Jukebox/API/logs/
+Jukebox/DAL/bin/
+Jukebox/DAL/obj/
+Jukebox/Model/bin/
+Jukebox/Model/obj/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

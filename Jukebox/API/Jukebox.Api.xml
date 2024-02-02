@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jukebox.API</name>
+    </assembly>
+    <members>
+        <member name="M:Jcm.API.Controllers.PerformersController.GetPerformanceActsAsync(System.Int32,System.Int32)">
+            <summary>
+            Get list of performers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.PerformersController.GetPerformanceActByIdAsync(System.Int32)">
+            <summary>
+            Get performer by id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.PerformersController.AddPerformanceActAsync(Jukebox.Models.Api.PerformerForCreationDto)">
+            <summary>
+            Add new performer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.PerformersController.UpdatePerformersAsync(Jukebox.Models.Api.PerformerForUpdateDto)">
+            <summary>
+            Update a performer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.PerformersController.DeletePerformerAsync(System.Int32)">
+            <summary>
+            Delete a performer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.SongsController.GetSongsAsync(System.Int32,System.Int32)">
+            <summary>
+            Get list of songs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.SongsController.GetSongsByPerformerIdAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get songs by performer id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.SongsController.GetSongByIdAsync(System.Int32)">
+            <summary>
+            Get song by id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.SongsController.UpdateSongAsync(Jukebox.Models.Api.SongForUpdateDto)">
+            <summary>
+            Update a song
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jcm.API.Controllers.SongsController.DeletePerformerAsync(System.Int32)">
+            <summary>
+            Delete a song
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
