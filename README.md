@@ -8,9 +8,11 @@
 - Serilog Logging (w/ Daily File/rolling interval)
 - Documented Swagger endpoints
 - API versioning
+- Postman Request collection for testing
 
  Todo:  
 -  JWT Authentication
 -  Claims Authorization
+-  Unit Tests
 -  Song voting feature
   
