@@ -137,7 +137,6 @@ app.MapControllers();
 app.Run();
 
 
-// Check auth - add auth Postman request
 // Add paging class
 // Add search/filtering
 // Add file d/l
