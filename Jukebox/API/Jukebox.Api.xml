@@ -9,13 +9,13 @@
             username and password
             </summary>
         </member>
-        <member name="M:Jcm.API.Controllers.PerformersController.GetPerformanceActsAsync(System.Int32,System.Int32)">
+        <member name="M:Jcm.API.Controllers.PerformersController.GetPerformersAsync(System.String,System.Int32,System.Int32)">
             <summary>
             Get list of performers
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Jcm.API.Controllers.PerformersController.GetPerformanceActByIdAsync(System.Int32)">
+        <member name="M:Jcm.API.Controllers.PerformersController.GetPerformerByIdAsync(System.Int32)">
             <summary>
             Get performer by id
             </summary>
@@ -39,7 +39,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Jcm.API.Controllers.SongsController.GetSongsAsync(System.Int32,System.Int32)">
+        <member name="M:Jcm.API.Controllers.SongsController.GetSongsAsync(System.String,System.Int32,System.Int32)">
             <summary>
             Get list of songs
             </summary>

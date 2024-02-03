@@ -41,17 +41,26 @@ namespace Jukebox.DAL.Repositories
             return _mapper.Map<PerformerDto>(entity);
         }
 
-        public async Task<List<PerformerDto>> GetPerformerAsync(
-            int pageNumber, int pageSize)
+        public async Task<(List<PerformerDto>, PaginationMetadata)> GetPerformersAsync(
+            string searchTerm, int pageNumber = 0, int pageSize = 10)
         {
-            var entityList = await _jukeboxContext.Performers
-                .Skip(pageNumber)
+            var query = _jukeboxContext.Performers as IQueryable<Performer>;
+
+            if(searchTerm != null)
+                query = query.Where(p => p.Name.Contains(searchTerm.Trim()));
+
+            int totalRecords = await query.CountAsync();
+
+            var entityList = await query
+                .Skip(pageNumber * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
             var mappedList = _mapper.Map<List<PerformerDto>>(entityList);
 
-            return mappedList;
+            var paginationMetadata = new PaginationMetadata(totalRecords, pageSize, pageNumber);
+
+            return (mappedList, paginationMetadata);
         }
 
         //public async Task<List<PerformerDto>> GetPerformerAsync(

@@ -72,7 +72,6 @@ builder.Services.AddDbContext<JukeboxContext>(
         builder.Configuration["ConnectionStrings:JukeboxDBConnectionString"],
         b => b.MigrationsAssembly("Jukebox.DAL")));
 
-
 builder.Services.AddApiVersioning(setupAction =>
 {
     setupAction.AssumeDefaultVersionWhenUnspecified = true;
@@ -80,9 +79,6 @@ builder.Services.AddApiVersioning(setupAction =>
     setupAction.ReportApiVersions = true;
 });
 
-
-
-// Dependency Injection
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer(options =>
     {
@@ -110,6 +106,8 @@ builder.Services.AddAuthorization(options =>
     //    policy.RequireClaim("member", "true");
     //});
 });
+
+// Regular Dependency Injection classes
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddScoped<IPerformerRespository, PerformerRespository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
@@ -133,13 +131,10 @@ app.UseAuthorization();
 
 
 app.MapControllers();
-
 app.Run();
 
 
-// Add paging class
-// Add search/filtering
-// Add file d/l
+
 // Add API tests
 // Add Unit tests
 // Code UI

@@ -34,18 +34,16 @@ namespace Jcm.API.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<PerformerDto>>> GetPerformanceActsAsync(
-            int pageNumber = 0, int pageSize = 10)
+        public async Task<ActionResult<IEnumerable<PerformerDto>>> GetPerformersAsync(
+            string searchTerm, int pageNumber = 0, int pageSize = 10)
         {
-            var list = await _performerRepository
-                .GetPerformerAsync(pageNumber, pageSize);
+            var (performerslist, paginationMetadata) = await _performerRepository
+                .GetPerformersAsync(searchTerm, pageNumber, pageSize);
 
-            if (list == null)
-            {
-                return NotFound();
-            }
+            Response.Headers.Add("X-Pagination",
+                System.Text.Json.JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(list);
+            return Ok(performerslist);
         }
 
         /// <summary>
@@ -55,7 +53,7 @@ namespace Jcm.API.Controllers
         [HttpGet("{id}", Name = "GetPerformer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<PerformerDto>> GetPerformanceActByIdAsync(int id)
+        public async Task<ActionResult<PerformerDto>> GetPerformerByIdAsync(int id)
         {
             var performer = await _performerRepository.GetPerformerAsync(id);
 

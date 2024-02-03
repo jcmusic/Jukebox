@@ -2,6 +2,7 @@ using Jukebox.BLL.Interfaces;
 using Jukebox.Models.Api;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Jcm.API.Controllers
 {
@@ -36,17 +37,15 @@ namespace Jcm.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<SongDto>>> GetSongsAsync(
-            int pageNumber = 0, int pageSize = 10)
+            string searchTerm, int pageNumber = 0, int pageSize = 10)
         {
-            var list = await _songRepository
-                .GetSongsAsync(pageNumber, pageSize);
+            var (songList, paginationMetadata) = await _songRepository
+                .GetSongsAsync(searchTerm, pageNumber, pageSize);
 
-            if (list == null)
-            {
-                return NotFound();
-            }
+            Response.Headers.Add("X-Pagination", 
+                JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(list);
+            return Ok(songList);
         }
 
         /// <summary>

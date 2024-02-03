@@ -2,6 +2,7 @@
 using Jukebox.BLL.Interfaces;
 using Jukebox.DAL.Entities;
 using Jukebox.Models.Api;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jukebox.DAL.Repositories
@@ -31,18 +32,26 @@ namespace Jukebox.DAL.Repositories
             return mappedSong;
         }
 
-        public async Task<List<SongDto>> GetSongsAsync(
-            int pageNumber = 0, int pageSize = 15)
+        public async Task<(List<SongDto>, PaginationMetadata)> GetSongsAsync(
+            string searchTerm, int pageNumber = 0, int pageSize = 15)
         {
-            var songList = await _jukeboxContext.Songs
+            var query = _jukeboxContext.Songs as IQueryable<Song>;
+
+            if (searchTerm != null)
+                query = query.Where(s => s.Name.Contains(searchTerm.Trim()));
+
+            var totalCount = query.Count();
+
+            var songList = await query
                 .OrderBy(x => x.Name)
                 .Skip(pageNumber * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
+            var paginationMetadata = new PaginationMetadata(totalCount, pageSize, pageNumber);
             var mappedSongList = _mapper.Map<List<SongDto>>(songList);
 
-            return mappedSongList;
+            return (mappedSongList, paginationMetadata);
         }
 
         public async Task<SongDto> AddSong(SongForCreationDto song)

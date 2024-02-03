@@ -6,7 +6,7 @@ namespace Jukebox.BLL.Interfaces
     {
         Task<SongDto> AddSong(SongForCreationDto song);
         Task<SongDto> GetSongAsync(int id);
-        Task<List<SongDto>> GetSongsAsync(int pageNumber = 0, int pageSize = 15);
+        Task<(List<SongDto>, PaginationMetadata)> GetSongsAsync(string searchterm, int pageNumber, int pageSize);
         Task<List<SongDto>> GetSongsByPerformerIdAsync(int id, int pageNumber, int pageSize);
         Task<bool> RemoveSong(int songId);
         Task<bool> SaveChangesAsync();
