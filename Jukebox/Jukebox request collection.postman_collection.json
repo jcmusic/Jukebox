@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "d25e8193-23dc-4df5-85b8-e1f0c0079ec2",
+		"name": "Jukebox request collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "395599"
+	},
+	"item": [
+		{
+			"name": "POST Authentication info to get a token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jmaloney\",\r\n    \"password\": \"This is a relatively long sentence that acts as my password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/authentication/authenticate",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"authentication",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Performer List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/performers?pageNumber=0&pageSize=10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"performers"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Performer List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW4tbmFtZSI6IkpvaG4iLCJmYW1pbHktbmFtZSI6Ik1hbG9uZXkiLCJuYmYiOjE3MDY5MzE5ODEsImV4cCI6MTcwNjkzNTU4MSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6Imp1a2Vib3hhcGkifQ.D0L0uoHGOdXQ0HA33N67iEV_Vd288Ss93Vm4ggGkRyk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/performers?pageNumber=0&pageSize=10&searchTerm=ll",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"performers"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						},
+						{
+							"key": "searchTerm",
+							"value": "ll"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Performer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"The Muppets\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/performers/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"performers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add (Existing) Performer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"The Beatles\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/performers/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"performers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Performer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"The Electric Mayhem Band\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/performers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"performers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Performer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/performers/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"performers",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Song List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW4tbmFtZSI6IkpvaG4iLCJmYW1pbHktbmFtZSI6Ik1hbG9uZXkiLCJuYmYiOjE3MDY5MzE5ODEsImV4cCI6MTcwNjkzNTU4MSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6Imp1a2Vib3hhcGkifQ.D0L0uoHGOdXQ0HA33N67iEV_Vd288Ss93Vm4ggGkRyk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/songs?PageNumber=0&PageSize=3&SearchTerm=All",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"songs"
+					],
+					"query": [
+						{
+							"key": "PageNumber",
+							"value": "0"
+						},
+						{
+							"key": "PageSize",
+							"value": "3"
+						},
+						{
+							"key": "SearchTerm",
+							"value": "All"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Song",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/songs/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"songs",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Songs by Performer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW4tbmFtZSI6IkpvaG4iLCJmYW1pbHktbmFtZSI6Ik1hbG9uZXkiLCJuYmYiOjE3MDY5MDIxMTAsImV4cCI6MTcwNjkwNTcxMCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6Imp1a2Vib3hhcGkifQ.Va70XJzHzGGA8C60w5Mo_aFfRl2htVVew8nM8g88-_E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/songs/performers/1?PageNumber=0&PageSize=10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"songs",
+						"performers",
+						"1"
+					],
+					"query": [
+						{
+							"key": "PageNumber",
+							"value": "0"
+						},
+						{
+							"key": "PageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Logo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/download/logo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"download",
+						"logo"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "portNumber",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

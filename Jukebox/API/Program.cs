@@ -62,7 +62,6 @@ builder.Services.AddSwaggerGen(setupAction =>
         }
     });
     // END Authentication
-
 });
 
 
