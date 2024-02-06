@@ -11,10 +11,10 @@ namespace Jukebox.DAL.Repositories
     {
         #region Fields/Ctor
 
-        private readonly JukeboxContext _jukeboxContext;
+        private readonly JukeboxDbContext _jukeboxContext;
         private readonly IMapper _mapper;
 
-        public SongRepository(JukeboxContext jukeboxContext, IMapper mapper)
+        public SongRepository(JukeboxDbContext jukeboxContext, IMapper mapper)
         {
             _jukeboxContext = jukeboxContext;
             _mapper = mapper;

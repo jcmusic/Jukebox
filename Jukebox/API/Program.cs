@@ -9,6 +9,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AutoMapper;
+using Jcm.DAL.AutoMapper;
 
 
 Log.Logger = new LoggerConfiguration()
@@ -66,7 +68,7 @@ builder.Services.AddSwaggerGen(setupAction =>
 
 
 // DB Context
-builder.Services.AddDbContext<JukeboxContext>(
+builder.Services.AddDbContext<JukeboxDbContext>(
     DbContextOptions => DbContextOptions.UseSqlite(
         builder.Configuration["ConnectionStrings:JukeboxDBConnectionString"],
         b => b.MigrationsAssembly("Jukebox.DAL")));
@@ -107,6 +109,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 // Regular Dependency Injection classes
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddScoped<IPerformerRespository, PerformerRespository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
@@ -134,7 +137,8 @@ app.Run();
 
 
 
-// Add API tests
 // Add Unit tests
+// Add API tests
 // Code UI
+// Add Voting Feature
 // Deploy

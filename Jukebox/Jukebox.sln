@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{DA9573
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CDEA4002-E223-40E2-A400-1937F3704358}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jukebox.Test", "Jukebox.Test\Jukebox.Test.csproj", "{26F4C709-753C-4A79-B3D8-7D37408D61D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{9E12D030-D029-44A4-9906-5BD458889426}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E12D030-D029-44A4-9906-5BD458889426}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E12D030-D029-44A4-9906-5BD458889426}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F4C709-753C-4A79-B3D8-7D37408D61D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F4C709-753C-4A79-B3D8-7D37408D61D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F4C709-753C-4A79-B3D8-7D37408D61D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F4C709-753C-4A79-B3D8-7D37408D61D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

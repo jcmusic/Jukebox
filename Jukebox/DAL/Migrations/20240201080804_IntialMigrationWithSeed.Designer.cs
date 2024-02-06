@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Jukebox.DAL.Migrations
 {
-    [DbContext(typeof(JukeboxContext))]
+    [DbContext(typeof(JukeboxDbContext))]
     [Migration("20240201080804_IntialMigrationWithSeed")]
     partial class IntialMigrationWithSeed
     {

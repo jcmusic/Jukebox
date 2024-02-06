@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Jukebox.DAL.Migrations
 {
-    [DbContext(typeof(JukeboxContext))]
+    [DbContext(typeof(JukeboxDbContext))]
     [Migration("20240202045925_Songs_AddVotesAndYear")]
     partial class Songs_AddVotesAndYear
     {

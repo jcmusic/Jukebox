@@ -1,14 +1,26 @@
 ﻿using Jukebox.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Jukebox.DAL
 {
-    public class JukeboxContext : DbContext
+    public interface IJukeboxDbContext
+    {
+        DbSet<Performer> Performers { get; set; }
+        DbSet<Song> Songs { get; set; }
+
+        public abstract EntityEntry<TEntity> Update<TEntity>(TEntity entity)
+            where TEntity : class;
+
+        public abstract Task<int> SaveChangesAsync();
+    }
+
+    public class JukeboxDbContext : DbContext, IJukeboxDbContext
     {
         public DbSet<Performer> Performers { get; set; } = null!;
         public DbSet<Song> Songs { get; set; } = null!;
 
-        public JukeboxContext(DbContextOptions<JukeboxContext> options)
+        public JukeboxDbContext(DbContextOptions<JukeboxDbContext> options)
             : base(options)
         {
         }
@@ -87,6 +99,11 @@ namespace Jukebox.DAL
                 );
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            return base.SaveChangesAsync();
         }
     }
 }

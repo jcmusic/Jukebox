@@ -10,11 +10,11 @@ namespace Jukebox.DAL.Repositories
     {
         #region Fields/Ctor
 
-        private readonly JukeboxContext _jukeboxContext;
+        private readonly IJukeboxDbContext _jukeboxContext;
         private readonly IMapper _mapper;
 
         public PerformerRespository(
-            JukeboxContext jukeboxContext, IMapper mapper)
+            IJukeboxDbContext jukeboxContext, IMapper mapper)
         {
             _jukeboxContext = jukeboxContext;
             _mapper = mapper;
@@ -42,7 +42,7 @@ namespace Jukebox.DAL.Repositories
         }
 
         public async Task<(List<PerformerDto>, PaginationMetadata)> GetPerformersAsync(
-            string searchTerm, int pageNumber = 0, int pageSize = 10)
+            string searchTerm = null, int pageNumber = 0, int pageSize = 10)
         {
             var query = _jukeboxContext.Performers as IQueryable<Performer>;
 
