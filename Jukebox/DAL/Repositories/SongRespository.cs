@@ -34,6 +34,7 @@ namespace Jukebox.DAL.Repositories
         public async Task<(List<SongDto>, PaginationMetadata)> GetSongsAsync(
             string? searchTerm = null, int pageNumber = 0, int pageSize = 15)
         {
+            searchTerm = searchTerm?.Trim();
             var query = _jukeboxContext.Songs as IQueryable<Song>;
 
             if (searchTerm != null)

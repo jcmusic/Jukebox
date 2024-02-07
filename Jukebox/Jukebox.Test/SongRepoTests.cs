@@ -117,22 +117,22 @@ namespace Jukebox.Test
         {
             // Arrange
             var songCount = await _fixture._dbContext.Songs.CountAsync();
-            var pageNo = songCount > 14 ? 15 : songCount;
+            int pageSize = songCount > 14 ? 15 : songCount;
 
             // Act
-            var (songlist, paginationMetadata) = await _fixture.SongRepository.GetSongsAsync();
+            var (songlist, paginationMetadata) = await _fixture.SongRepository.GetSongsAsync(null, 0, pageSize);
 
             // Assert
-            Assert.Equal(songCount, songlist.Count);
             Assert.Equal(songCount, paginationMetadata.TotalItemCount);
-            Assert.Equal(pageNo, paginationMetadata.CurrentPage);
+            Assert.Equal((songCount / pageSize), paginationMetadata.TotalPageCount);
+            Assert.Equal(0, paginationMetadata.CurrentPage);
         }
 
         [Fact]
         public async void SongRepo_GetSongsAsync_Search()
         {
             // Arrange
-            var searchTerm = "you";
+            var searchTerm = "You";
 
             // Act
             var (songlist, paginationMetadata) = await _fixture.SongRepository.GetSongsAsync(searchTerm);

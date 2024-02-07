@@ -42,12 +42,13 @@ namespace Jukebox.DAL.Repositories
         }
 
         public async Task<(List<PerformerDto>, PaginationMetadata)> GetPerformersAsync(
-            string searchTerm = null, int pageNumber = 0, int pageSize = 10)
+            string? searchTerm = null, int pageNumber = 0, int pageSize = 10)
         {
+            searchTerm = searchTerm?.Trim();
             var query = _jukeboxContext.Performers as IQueryable<Performer>;
 
             if(searchTerm != null)
-                query = query.Where(p => p.Name.Contains(searchTerm.Trim()));
+                query = query.Where(p => p.Name.Contains(searchTerm));
 
             int totalRecords = await query.CountAsync();
 
