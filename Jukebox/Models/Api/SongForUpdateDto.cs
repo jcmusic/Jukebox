@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Jukebox.Models.Api
+﻿namespace Jukebox.Models.Api
 {
     /// <summary>
     /// Dto for a song
@@ -21,5 +19,15 @@ namespace Jukebox.Models.Api
         /// Year the song wasa released
         /// </summary>
         public int? Year { get; set; }
+
+        /// <summary>
+        /// Id of the Performer of this song
+        /// </summary>
+        public int PerformerId { get; set; }
+
+        /// <summary>
+        /// The number if votes a song has
+        /// </summary>
+        public int? Votes { get; set; }
     }
 }

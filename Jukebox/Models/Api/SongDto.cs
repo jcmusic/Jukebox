@@ -23,6 +23,11 @@ namespace Jukebox.Models.Api
         public int? Year { get; set; }
 
         /// <summary>
+        /// Id of the Performer of this song
+        /// </summary>
+        public int PerformerId { get; set; }
+
+        /// <summary>
         /// The number if votes a song has
         /// </summary>
         public int? Votes { get; set; }

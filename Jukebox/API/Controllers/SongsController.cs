@@ -72,7 +72,7 @@ namespace Jcm.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<PerformerDto>> GetSongByIdAsync(int id)
         {
-            var song = await _songRepository.GetSongAsync(id);
+            var song = await _songRepository.GetSongByIdAsync(id);
 
             if (song == null)
             {
@@ -148,7 +148,7 @@ namespace Jcm.API.Controllers
         public async Task<ActionResult> DeletePerformerAsync(
             int id)
         {
-            var songDto = await _songRepository.GetSongAsync(id);
+            var songDto = await _songRepository.GetSongByIdAsync(id);
             if (songDto == null)
                 return NotFound();
 

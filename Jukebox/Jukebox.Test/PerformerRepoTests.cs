@@ -10,19 +10,48 @@ namespace Jukebox.Test
     /// </summary>
     public class PerformerRepoTests
     {
-        private JukeboxContextFixture _repos = new JukeboxContextFixture(seed : false);
+        private JukeboxContextFixture _fixture = new JukeboxContextFixture(seed : false);
 
         [Fact]
-        public async void PerformerRepo_GetPerformers()
+        public async void PerformerRepo_GetPerformers_List()
         {
             // Arrange
-            // based on seed data
+            var performerCount = await _fixture._dbContext.Performers.CountAsync();
 
             // Act
-            var (performersList, paginationMetadata) = await _repos.PerformerRespository.GetPerformersAsync();
+            var (performersList, paginationMetadata) = await _fixture.PerformerRespository.GetPerformersAsync();
 
             // Assert
-            Assert.True(performersList.Count >= 1);
+            Assert.Equal(performerCount, performersList.Count);
+        }
+
+        //[Fact]
+        //public async void PerformerRepo_GetPerformers_Search()
+        //{
+        //    // Arrange
+        //    var performerCount = await _fixture._dbContext.Performers.CountAsync();
+
+        //    // Act
+        //    var (performersList, paginationMetadata) = await _fixture.PerformerRespository.GetPerformersAsync();
+
+        //    // Assert
+        //    Assert.Equal(performerCount, performersList.Count);
+        //}
+
+        [Fact]
+        public async void PerformerRepo_GetPerformers_Pagination()
+        {
+            // Arrange
+            var performerCount = await _fixture._dbContext.Performers.CountAsync();
+            var pageNo = performerCount > 0 ? 1 : 0;
+
+            // Act
+            var (performersList, paginationMetadata) = await _fixture.PerformerRespository.GetPerformersAsync(null, pageNo, 1);
+
+            // Assert
+            Assert.Equal(performerCount, paginationMetadata.TotalPageCount);
+            Assert.Equal(performerCount, paginationMetadata.TotalItemCount);
+            Assert.Equal(pageNo, paginationMetadata.CurrentPage);
         }
 
         [Fact]
@@ -32,7 +61,7 @@ namespace Jukebox.Test
                 // based on seed data
 
             // Act
-            var performer = await _repos.PerformerRespository.GetPerformerAsync(2);
+            var performer = await _fixture.PerformerRespository.GetPerformerAsync(2);
 
             // Assert
             Assert.Equal("The Rolling Stones", performer.Name);
@@ -43,11 +72,11 @@ namespace Jukebox.Test
         {
             // Arrange
                 // based on seed data
-            var maxId = await _repos._dbContext.Performers.MaxAsync(x => x.Id);
+            var maxId = await _fixture._dbContext.Performers.MaxAsync(x => x.Id);
 
             // Act
-            var shouldExist = await _repos.PerformerRespository.PerformerExistsAsync(1);
-            var shouldNotexist = await _repos.PerformerRespository.PerformerExistsAsync(maxId + 1);
+            var shouldExist = await _fixture.PerformerRespository.PerformerExistsAsync(1);
+            var shouldNotexist = await _fixture.PerformerRespository.PerformerExistsAsync(maxId + 1);
 
             // Assert
             Assert.True(shouldExist, "PerformerId 1 should exist.");
@@ -64,7 +93,7 @@ namespace Jukebox.Test
             };
 
             // Act
-            var performerDto = await _repos.PerformerRespository.AddPerformerAsync(performerForCreationDto);
+            var performerDto = await _fixture.PerformerRespository.AddPerformerAsync(performerForCreationDto);
 
             // Assert
             Assert.Equal("testPerformer", performerDto.Name);
@@ -76,12 +105,12 @@ namespace Jukebox.Test
         {
             // Arrange
             // based on seed data
-            var maxId = await _repos._dbContext.Performers.MaxAsync(x => x.Id);
-            var performerDto = await _repos.PerformerRespository.GetPerformerAsync(maxId);
+            var maxId = await _fixture._dbContext.Performers.MaxAsync(x => x.Id);
+            var performerDto = await _fixture.PerformerRespository.GetPerformerAsync(maxId);
 
             // Act
-            var removed = await _repos.PerformerRespository.RemovePerformerAsync(performerDto);  // removal
-            var nullPerformerDto = await _repos.PerformerRespository.GetPerformerAsync(maxId);  // check it's removed
+            var removed = await _fixture.PerformerRespository.RemovePerformerAsync(performerDto);  // removal
+            var nullPerformerDto = await _fixture.PerformerRespository.GetPerformerAsync(maxId);  // check it's removed
             // Note: add ->    //check the cascase delete
 
             // Assert
@@ -93,8 +122,8 @@ namespace Jukebox.Test
         public async void PerformerRepo_PerformerExistsAsync_Dto()
         {
             // Arrange
-            var maxId = await _repos._dbContext.Performers.MaxAsync(x => x.Id);
-            var performerDto = await _repos.PerformerRespository.GetPerformerAsync(maxId);
+            var maxId = await _fixture._dbContext.Performers.MaxAsync(x => x.Id);
+            var performerDto = await _fixture.PerformerRespository.GetPerformerAsync(maxId);
             var existinCreationDto = new PerformerForCreationDto
             {
                 Name = performerDto.Name
@@ -105,29 +134,14 @@ namespace Jukebox.Test
             };
 
             // Act
-            var shouldExist = await _repos.PerformerRespository.PerformerExistsAsync(existinCreationDto);
-            var shouldNotexist = await _repos.PerformerRespository.PerformerExistsAsync(newCreationDto);
+            var shouldExist = await _fixture.PerformerRespository.PerformerExistsAsync(existinCreationDto);
+            var shouldNotexist = await _fixture.PerformerRespository.PerformerExistsAsync(newCreationDto);
 
             // Assert
             Assert.True(shouldExist);
             Assert.False(shouldNotexist);
         }
-
-        //Task<(List<PerformerDto>, PaginationMetadata)> GetPerformersAsync(string sesarchTerm, int pageNumber, int pageSize);
-        //[Fact]
-        //public async void PerformerRepo_TestPaging()
-        //{
-        //    // Arrange
-
-        //    // Act
-
-
-        //    // Assert
-
-        //}
     }
-
-
 }
 
 

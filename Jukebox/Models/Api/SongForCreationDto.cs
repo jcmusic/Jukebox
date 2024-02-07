@@ -6,18 +6,18 @@
     public class SongForCreationDto
     {
         /// <summary>
-        /// The id of the song
-        /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>
         /// The name of the song
         /// </summary>
         public string Name { get; set; } = string.Empty;
 
         /// <summary>
-        /// Year the song wasa released
+        /// Year the song was released
         /// </summary>
         public int? Year { get; set; }
+
+        /// <summary>
+        /// Id of the Performer of this song
+        /// </summary>
+        public int PerformerId { get; set; }
     }
 }

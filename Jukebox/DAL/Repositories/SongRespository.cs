@@ -2,7 +2,6 @@
 using Jukebox.BLL.Interfaces;
 using Jukebox.DAL.Entities;
 using Jukebox.Models.Api;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jukebox.DAL.Repositories
@@ -22,7 +21,7 @@ namespace Jukebox.DAL.Repositories
 
         #endregion
 
-        public async Task<SongDto> GetSongAsync(int id)
+        public async Task<SongDto> GetSongByIdAsync(int id)
         {
             var song = await _jukeboxContext.Songs
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -33,7 +32,7 @@ namespace Jukebox.DAL.Repositories
         }
 
         public async Task<(List<SongDto>, PaginationMetadata)> GetSongsAsync(
-            string searchTerm, int pageNumber = 0, int pageSize = 15)
+            string? searchTerm = null, int pageNumber = 0, int pageSize = 15)
         {
             var query = _jukeboxContext.Songs as IQueryable<Song>;
 
@@ -62,11 +61,22 @@ namespace Jukebox.DAL.Repositories
             return _mapper.Map<SongDto>(entity);
         }
 
-        public async Task<SongDto> UpdateSongAsync(SongForUpdateDto song)
+        public async Task<SongDto> UpdateSongAsync(SongForUpdateDto songDto)
         {
-            var entity = _mapper.Map<Song>(song);
+            //var entity = _mapper.Map<Song>(songDto);
+            var entity = await _jukeboxContext.Songs.SingleOrDefaultAsync(s => s.Id == songDto.Id);
+
+            if (entity is null)
+                throw new Exception("Entity not found for Id {song.Id}");
+
+            entity.Name = songDto.Name;
+            entity.PerformerId = songDto.PerformerId;
+            entity.Year = songDto.Year;
+            entity.Votes = songDto.Votes;
+
             _jukeboxContext.Songs.Update(entity);
             await SaveChangesAsync();
+
             return _mapper.Map<SongDto>(entity);
         }
 
@@ -93,10 +103,24 @@ namespace Jukebox.DAL.Repositories
             var entity = await _jukeboxContext.Songs
                 .SingleOrDefaultAsync(s => s.Id == id);
 
-            if (entity == null) return false;
+            if (entity == null) 
+                return false;
 
-            _jukeboxContext.Remove(entity);
-            return await SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> SongExistsAsync(SongForCreationDto songForCreationDto)
+        {
+            var entity = await _jukeboxContext.Songs
+                .Where(s => s.PerformerId == songForCreationDto.PerformerId)
+                .Where(s => s.Name == songForCreationDto.Name)
+                .Where(s => s.Year == songForCreationDto.Year)
+                .SingleOrDefaultAsync();
+
+            if (entity == null) 
+                return false;
+
+            return true;
         }
 
         public async Task<List<SongDto>> GetSongsByPerformerIdAsync(

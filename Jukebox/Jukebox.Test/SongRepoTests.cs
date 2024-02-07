@@ -1,3 +1,7 @@
+using Jukebox.Models.Api;
+using Jukebox.Test.Fixtures;
+using Microsoft.EntityFrameworkCore;
+
 namespace Jukebox.Test
 {
     /// <summary>
@@ -6,124 +10,163 @@ namespace Jukebox.Test
     /// </summary>
     public class SongRepoTests
     {
-        //private JukeboxContextFixture _repos = new JukeboxContextFixture(seed : false);
+        private JukeboxContextFixture _fixture = new JukeboxContextFixture(seed: false);
 
-        //[Fact]
-        //public async void PerformerRepo_GetPerformers()
-        //{
-        //    // Arrange
-        //    // based on seed data
+        [Fact]
+        public async void SongRepo_AddSong()
+        {
+            // Arrange
+            var maxId = await _fixture._dbContext.Performers.MaxAsync(x => x.Id);
+            var songToCreate = new SongForCreationDto
+            {
+                Name = "Song name",
+                Year = 2024,
+                PerformerId = maxId
+            };
 
-        //    // Act
-        //    var (performersList, paginationMetadata) = await _repos.PerformerRespository.GetPerformersAsync();
+            // Act
+            var newSongDto = await _fixture.SongRepository.AddSong(songToCreate);
 
-        //    // Assert
-        //    Assert.True(performersList.Count >= 1);
-        //}
+            // Assert
+            Assert.NotNull(newSongDto);
+            Assert.Equal(songToCreate.Name, newSongDto.Name);
+            Assert.Equal(songToCreate.Year, newSongDto.Year);
+            Assert.True(newSongDto.Id > 0);
+        }
 
-        //[Fact]
-        //public async void PerformerRepo_GetPerformerById()
-        //{
-        //    // Arrange
-        //        // based on seed data
+        [Fact]
+        public async void SongRepo_RemoveSong()
+        {
+            // Arrange
+            var maxSongId = await _fixture._dbContext.Songs.MaxAsync(x => x.Id);
+            var preSongCount = await _fixture._dbContext.Songs.CountAsync();
 
-        //    // Act
-        //    var performer = await _repos.PerformerRespository.GetPerformerAsync(2);
+            // Act
+            var removed = await _fixture.SongRepository.RemoveSong(maxSongId);
+            var postSongCount = await _fixture._dbContext.Songs.CountAsync();
 
-        //    // Assert
-        //    Assert.Equal("The Rolling Stones", performer.Name);
-        //}
+            // Assert
+            Assert.True(removed);
+            Assert.True(preSongCount == postSongCount + 1);
+        }
 
-        //[Fact]
-        //public async void PerformerRepo_PerformerExistsById()
-        //{
-        //    // Arrange
-        //        // based on seed data
-        //    var maxId = await _repos._dbContext.Performers.MaxAsync(x => x.Id);
+        [Fact]
+        public async void SongRepo_GetSongById()
+        {
+            // Arrange
+            var minSongId = await _fixture._dbContext.Songs.MinAsync(x => x.Id);
 
-        //    // Act
-        //    var shouldExist = await _repos.PerformerRespository.PerformerExistsAsync(1);
-        //    var shouldNotexist = await _repos.PerformerRespository.PerformerExistsAsync(maxId + 1);
+            // Act
+            var songDto = await _fixture.SongRepository.GetSongByIdAsync(minSongId);
 
-        //    // Assert
-        //    Assert.True(shouldExist, "PerformerId 1 should exist.");
-        //    Assert.False(shouldNotexist, $"PerformerId {maxId + 1} should not exist.");
-        //}
+            // Assert
+            Assert.NotNull(songDto);
+            Assert.Equal(minSongId, songDto.Id);
+        }
 
-        //[Fact]
-        //public async void PerformerRepo_AddPerformerAsync()
-        //{
-        //    // Arrange
-        //    var performerForCreationDto = new PerformerForCreationDto 
-        //    { 
-        //        Name = "testPerformer" 
-        //    };
+        [Fact]
+        public async void SongRepo_SongExistsByIdAsync()
+        {
+            // Arrange
+            var minSongId = await _fixture._dbContext.Songs.MinAsync(x => x.Id);
 
-        //    // Act
-        //    var performerDto = await _repos.PerformerRespository.AddPerformerAsync(performerForCreationDto);
+            // Act
+            var songExists = await _fixture.SongRepository.SongExistsAsync(minSongId);
 
-        //    // Assert
-        //    Assert.Equal("testPerformer", performerDto.Name);
-        //    Assert.True(performerDto.Id > 0);
-        //}
+            // Assert
+            Assert.True(songExists);
+        }
 
-        //[Fact]
-        //public async void PerformerRepo_RemovePerformerAsync()
-        //{
-        //    // Arrange
-        //    // based on seed data
-        //    var maxId = await _repos._dbContext.Performers.MaxAsync(x => x.Id);
-        //    var performerDto = await _repos.PerformerRespository.GetPerformerAsync(maxId);
+        [Fact]
+        public async void SongRepo_SongExistsByCreationDtoAsync()
+        {
+            // Arrange
+            var songDto = await _fixture._dbContext.Songs.FirstOrDefaultAsync();
+            var creationDto = new SongForCreationDto
+            {
+                Name = songDto.Name,
+                PerformerId = songDto.PerformerId,
+                Year = songDto.Year
+            };
 
-        //    // Act
-        //    var removed = await _repos.PerformerRespository.RemovePerformerAsync(performerDto);
-        //    var nullPerformerDto = await _repos.PerformerRespository.GetPerformerAsync(maxId);
+            // Act
+            var songExists = await _fixture.SongRepository.SongExistsAsync(creationDto);
 
-        //    // Assert
-        //    Assert.True(removed);
-        //    Assert.Null(nullPerformerDto);
-        //}
+            // Assert
+            Assert.True(songExists);
+        }
 
-        ////Task<bool> PerformerExistsAsync(PerformerForCreationDto dto);
-        //[Fact]
-        //public async void PerformerRepo_PerformerExistsAsync_Dto()
-        //{
-        //    // Arrange
-        //    var maxId = await _repos._dbContext.Performers.MaxAsync(x => x.Id);
-        //    var performerDto = await _repos.PerformerRespository.GetPerformerAsync(maxId);
-        //    var existinCreationDto = new PerformerForCreationDto
-        //    {
-        //        Name = performerDto.Name
-        //    };
-        //    var newCreationDto = new PerformerForCreationDto
-        //    {
-        //        Name = "SantaClaus"
-        //    };
+        [Fact]
+        public async void SongRepo_GetSongsAsync_Pagination()
+        {
+            // Arrange
+            var songCount = await _fixture._dbContext.Songs.CountAsync();
+            var pageNo = songCount > 0 ? 1 : 0;
 
-        //    // Act
-        //    var shouldExist = await _repos.PerformerRespository.PerformerExistsAsync(existinCreationDto);
-        //    var shouldNotexist = await _repos.PerformerRespository.PerformerExistsAsync(newCreationDto);
+            // Act
+            var (songlist, paginationMetadata) = await _fixture.SongRepository.GetSongsAsync(null, pageNo, 1);
 
-        //    // Assert
-        //    Assert.True(shouldExist);
-        //    Assert.False(shouldNotexist);
-        //}
+            // Assert
+            Assert.Equal(songCount, paginationMetadata.TotalPageCount);
+            Assert.Equal(songCount, paginationMetadata.TotalItemCount);
+            Assert.Equal(pageNo, paginationMetadata.CurrentPage);
+        }
 
-        ////Task<(List<PerformerDto>, PaginationMetadata)> GetPerformersAsync(string sesarchTerm, int pageNumber, int pageSize);
-        ////[Fact]
-        ////public async void PerformerRepo_()
-        ////{
-        ////    // Arrange
+        [Fact]
+        public async void SongRepo_GetSongsAsync_List()
+        {
+            // Arrange
+            var songCount = await _fixture._dbContext.Songs.CountAsync();
+            var pageNo = songCount > 14 ? 15 : songCount;
 
-        ////    // Act
+            // Act
+            var (songlist, paginationMetadata) = await _fixture.SongRepository.GetSongsAsync();
 
+            // Assert
+            Assert.Equal(songCount, songlist.Count);
+            Assert.Equal(songCount, paginationMetadata.TotalItemCount);
+            Assert.Equal(pageNo, paginationMetadata.CurrentPage);
+        }
 
-        ////    // Assert
+        [Fact]
+        public async void SongRepo_GetSongsAsync_Search()
+        {
+            // Arrange
+            var searchTerm = "you";
 
-        ////}
+            // Act
+            var (songlist, paginationMetadata) = await _fixture.SongRepository.GetSongsAsync(searchTerm);
+
+            // Assert
+            Assert.Equal(2, songlist.Count);
+        }
+
+        [Fact]
+        public async void SongRepo_UpdateSongAsync()
+        {
+            // Arrange
+            var songDto = await _fixture._dbContext.Songs.FirstOrDefaultAsync();
+            if (songDto == null)
+                throw new Exception("test data missing.");
+
+            var oldName = songDto?.Name;
+            var newName = "NewName";
+
+            var updateDto = new SongForUpdateDto
+            {
+                Name = newName,
+                Id = songDto.Id,
+                Year = songDto.Year,
+                PerformerId = songDto.PerformerId
+            };
+
+            // Act
+            await _fixture.SongRepository.UpdateSongAsync(updateDto);
+
+            // Assert
+            Assert.Equal(newName, songDto.Name);
+        }
     }
-
-
 }
 
 

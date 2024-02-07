@@ -12,13 +12,13 @@ namespace Jcm.DAL.AutoMapper
             CreateMap<Performer, PerformerDto>();
             CreateMap<PerformerDto, Performer>();
             CreateMap<PerformerForCreationDto, Performer>();
-            //CreateMap<PerformerForUpdateDto, Performer>();
+            CreateMap<PerformerForUpdateDto, Performer>();
 
             // Performer
             CreateMap<Song, SongDto>();
             CreateMap<SongDto, Song>();
-            CreateMap<SongForCreationDto, SongDto>();
-            //CreateMap<SongForUpdateDto, SongDto>();
+            CreateMap<SongForCreationDto, Song>();
+            CreateMap<SongForUpdateDto, Song>();
         }
     }
 }
